@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+<!--    menampilkan gambar hewan-->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="132dp"
