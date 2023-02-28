@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showNext() {
-//        index = if (index == hewan.size-1) 0 else index + 1
+        index = if (index == hewan.size-1) 0 else index + 1
         val imageView: ImageView = findViewById(R.id.imageView)
         val resourceId = when(index) {
             1 -> R.drawable.bebek
