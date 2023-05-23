@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/otnas/Documents/Dev/categories/Android/MobPro1/app/src/main/res/drawable/ayam_background.xml" value="0.1" />
-        <entry key="..\:/Users/otnas/Documents/Dev/categories/Android/MobPro1/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/otnas/Documents/Dev/categories/Android/MobPro1/app/src/main/res/mipmap-anydpi-v26/ayam.xml" value="0.1" />
+        <entry key="..\:/Andoid Studio Projects/InventoryManagement/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
+        <entry key="..\:/Andoid Studio Projects/InventoryManagement/app/src/main/res/layout/fragment_add_item.xml" value="0.14492753623188406" />
+        <entry key="..\:/Andoid Studio Projects/InventoryManagement/app/src/main/res/layout/fragment_item_detail.xml" value="0.14492753623188406" />
+        <entry key="..\:/Andoid Studio Projects/InventoryManagement/app/src/main/res/layout/item_list_fragment.xml" value="0.14945652173913043" />
+        <entry key="..\:/Andoid Studio Projects/InventoryManagement/app/src/main/res/layout/item_list_item.xml" value="0.22" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/layout/product_list_fragment.xml" value="0.2" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/layout/product_list_item.xml" value="0.2" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.131" />
+        <entry key="..\:/Dev/categories/Android/google_android_basics_in_kotlin_inventory_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.131" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
