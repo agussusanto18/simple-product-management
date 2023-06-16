@@ -15,19 +15,37 @@
  */
 package com.example.myproducts
 
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.opengl.Visibility
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myproducts.databinding.FragmentAddProductBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.myproducts.data.Product
+import com.example.myproducts.data.Item
+import com.example.myproducts.databinding.FragmentAddProductBinding
+import org.json.JSONException
+import org.json.JSONObject
+
 
 class CreateProductFragment : Fragment() {
 
@@ -45,12 +63,28 @@ class CreateProductFragment : Fragment() {
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
 
+    lateinit var recyclerView: RecyclerView
+
+    private var mAdapter: ProductOptionAdapter?= null;
+    private var productsOptions: MutableList<Item> = ArrayList()
+
+    lateinit var progressBar: ProgressBar
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddProductBinding.inflate(inflater, container, false)
+
+        recyclerView = binding.productsRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter = ProductOptionAdapter(productsOptions)
+        recyclerView.adapter = mAdapter
+        progressBar = binding.progressBar
+        fetchQuetionList()
+
         return binding.root
     }
 
@@ -69,7 +103,47 @@ class CreateProductFragment : Fragment() {
                 addNewItem()
             }
         }
+
     }
+
+    private fun fetchQuetionList() {
+        if (!isInternetAvailable(requireContext())) {
+            Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show()
+        }
+
+        progressBar.visibility = View.VISIBLE
+        AndroidNetworking.get("https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=android&site=stackoverflow")
+            .setPriority(Priority.MEDIUM)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject) {
+                    progressBar.visibility = View.GONE
+                    try {
+                        // Extract data by key
+                        val itemsArray = response.getJSONArray("items")
+                        for (i in 0 until itemsArray.length()) {
+                            val itemArray = itemsArray.getJSONObject(i)
+                            val id = itemArray.getInt("question_id")
+                            val title = itemArray.getString("title")
+                            val link = itemArray.getString("link")
+                            productsOptions.add(Item(id, title, link))
+                        }
+                        Log.d(TAG, productsOptions.toString())
+                        mAdapter!!.notifyDataSetChanged()
+                    } catch (e: JSONException) {
+                        progressBar.visibility = View.GONE
+                        Log.e(TAG, e.message.toString())
+                    }
+                }
+
+                override fun onError(error: ANError) {
+                    progressBar.visibility = View.GONE
+                    Log.e(TAG, error.errorBody)
+                    Toast.makeText(requireContext(), "Failed to load data", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 
     private fun updateItem(product: Product){
         var newProduct: Product
@@ -125,5 +199,17 @@ class CreateProductFragment : Fragment() {
                 InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
         _binding = null
+    }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val networkCapabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+            return networkInfo.isConnected
+        }
     }
 }
