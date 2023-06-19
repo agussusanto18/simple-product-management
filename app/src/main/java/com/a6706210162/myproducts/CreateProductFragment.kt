@@ -76,6 +76,7 @@ class CreateProductFragment : Fragment() {
     lateinit var itemNameInput: TextInputEditText
     lateinit var itemPriceInput: TextInputEditText
     lateinit var itemStockInput: TextInputEditText
+    lateinit var imageStockInput: TextInputEditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,8 +89,9 @@ class CreateProductFragment : Fragment() {
         itemNameInput = binding.itemName
         itemPriceInput = binding.itemPrice
         itemStockInput = binding.itemCount
+        imageStockInput = binding.itemImage
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mAdapter = ProductOptionAdapter(productsOptions, requireContext(), itemNameInput, itemPriceInput, itemStockInput)
+        mAdapter = ProductOptionAdapter(productsOptions, requireContext(), itemNameInput, itemPriceInput, itemStockInput, imageStockInput)
         recyclerView.adapter = mAdapter
         progressBar = binding.progressBar
         fetchQuetionList()
@@ -164,7 +166,8 @@ class CreateProductFragment : Fragment() {
                 id = product.id,
                 itemName = binding.itemName.text.toString(),
                 itemPrice = binding.itemPrice.text.toString().toDouble(),
-                quantityInStock = binding.itemCount.text.toString().toInt()
+                quantityInStock = binding.itemCount.text.toString().toInt(),
+                image = binding.itemImage.text.toString(),
             )
             viewModel.updateItem(newProduct)
             showNotification("Product with name ${binding.itemName.text} has been updated")
@@ -181,6 +184,7 @@ class CreateProductFragment : Fragment() {
             itemName.setText(product.itemName)
             itemPrice.setText(product.itemPrice.toString())
             itemCount.setText(product.quantityInStock.toString())
+            itemImage.setText(product.image)
         }
     }
 
@@ -198,6 +202,7 @@ class CreateProductFragment : Fragment() {
                 binding.itemName.text.toString(),
                 binding.itemPrice.text.toString(),
                 binding.itemCount.text.toString(),
+                binding.itemImage.text.toString()
             )
             showNotification("Product with name ${binding.itemName.text} has been added")
             val action = CreateProductFragmentDirections.actionAddItemFragmentToItemListFragment()

@@ -13,5 +13,7 @@ data class Product(
     @ColumnInfo(name = "price")
     val itemPrice: Double,
     @ColumnInfo(name = "quantity")
-    val quantityInStock: Int
+    val quantityInStock: Int,
+    @ColumnInfo(name = "image")
+    val image: String,
 )

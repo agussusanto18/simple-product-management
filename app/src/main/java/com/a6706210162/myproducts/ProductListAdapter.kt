@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.a6706210162.myproducts.databinding.ProductListItemBinding
 import com.a6706210162.myproducts.data.Product
+import com.squareup.picasso.Picasso
 
 class ProductListAdapter(private val listener: ItemClickListener) : ListAdapter<Product, ProductListAdapter.ItemViewHolder>(DiffCallBack) {
 
@@ -26,6 +27,10 @@ class ProductListAdapter(private val listener: ItemClickListener) : ListAdapter<
                 itemName.text = product.itemName
                 itemPrice.text = product.itemPrice.toString()
                 itemQuantity.text = product.quantityInStock.toString()
+
+                Picasso.get()
+                    .load(product.image)
+                    .into(itemImage)
             }
         }
     }

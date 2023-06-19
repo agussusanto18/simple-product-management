@@ -19,7 +19,8 @@ class ProductOptionAdapter(
     private val context: Context,
     private val item_name_input: TextInputEditText,
     private val item_price_input: TextInputEditText,
-    private val item_stock_input: TextInputEditText) : RecyclerView.Adapter<ProductOptionAdapter.ViewHolder>() {
+    private val item_stock_input: TextInputEditText,
+    private val item_image_input: TextInputEditText) : RecyclerView.Adapter<ProductOptionAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
@@ -43,6 +44,7 @@ class ProductOptionAdapter(
             item_name_input.setText(data.title)
             item_price_input.setText(data.price)
             item_stock_input.setText(data.quantity)
+            item_image_input.setText(data.image)
 
             // Create and display the notification
             val notificationId = position

@@ -25,16 +25,17 @@ class ProductMangementViewModel(private val productDao: ProductDao): ViewModel()
         return (product.quantityInStock > 0)
     }
 
-    private fun getNewItemEntry(itemName: String, itemPrice: String, itemCount: String): Product {
+    private fun getNewItemEntry(itemName: String, itemPrice: String, itemCount: String, itemImage: String): Product {
         return Product(
             itemName = itemName,
             itemPrice = itemPrice.toDouble(),
-            quantityInStock = itemCount.toInt()
+            quantityInStock = itemCount.toInt(),
+            image = itemImage
         )
     }
 
-    fun addNewItem(itemName: String, itemPrice: String, itemCount: String) {
-        val newItem = getNewItemEntry(itemName, itemPrice, itemCount)
+    fun addNewItem(itemName: String, itemPrice: String, itemCount: String, itemImage: String) {
+        val newItem = getNewItemEntry(itemName, itemPrice, itemCount, itemImage)
         insertItem(newItem)
     }
 
