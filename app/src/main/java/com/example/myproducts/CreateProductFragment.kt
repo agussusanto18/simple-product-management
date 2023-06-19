@@ -15,9 +15,12 @@
  */
 package com.example.myproducts
 
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.opengl.Visibility
@@ -30,6 +33,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -80,7 +84,7 @@ class CreateProductFragment : Fragment() {
 
         recyclerView = binding.productsRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mAdapter = ProductOptionAdapter(productsOptions)
+        mAdapter = ProductOptionAdapter(productsOptions, requireContext())
         recyclerView.adapter = mAdapter
         progressBar = binding.progressBar
         fetchQuetionList()
@@ -155,7 +159,7 @@ class CreateProductFragment : Fragment() {
                 quantityInStock = binding.itemCount.text.toString().toInt()
             )
             viewModel.updateItem(newProduct)
-
+            showNotification("Product with name ${binding.itemName.text} has been updated")
             val action = CreateProductFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
         }
@@ -187,6 +191,7 @@ class CreateProductFragment : Fragment() {
                 binding.itemPrice.text.toString(),
                 binding.itemCount.text.toString(),
             )
+            showNotification("Product with name ${binding.itemName.text} has been added")
             val action = CreateProductFragmentDirections.actionAddItemFragmentToItemListFragment()
             findNavController().navigate(action)
         }
@@ -211,5 +216,26 @@ class CreateProductFragment : Fragment() {
             val networkInfo = connectivityManager.activeNetworkInfo ?: return false
             return networkInfo.isConnected
         }
+    }
+
+    fun showNotification(message: String){
+        val notificationId = 12345678
+        val channelId = "prodman123"
+        val channelName = "Product Management"
+        val notificationText = message
+
+        val intent = Intent(context, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val notification = NotificationCompat.Builder(requireContext(), channelId)
+            .setContentTitle(channelName)
+            .setContentText(notificationText)
+            .setSmallIcon(R.drawable.baseline_notifications_24)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .build()
+
+        val notificationManager = requireContext().getSystemService(NotificationManager::class.java)
+        notificationManager.notify(notificationId, notification)
     }
 }
