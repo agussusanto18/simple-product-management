@@ -16,7 +16,8 @@ class ProductOptionAdapter(private val dataList: List<Item>, private val context
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-        // Add references to other views here as needed
+        val priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
+        val stockTextView: TextView = itemView.findViewById(R.id.stockTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +28,8 @@ class ProductOptionAdapter(private val dataList: List<Item>, private val context
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = dataList[position]
         holder.titleTextView.text = data.title
+        holder.priceTextView.text = "$${data.price}"
+        holder.stockTextView.text = "Stock: ${data.quantity}"
 
         // Set OnClickListener for the item
         holder.itemView.setOnClickListener {

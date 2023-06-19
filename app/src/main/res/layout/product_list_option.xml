@@ -18,7 +18,19 @@
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
                 android:text="-"/>
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0"/>
+            <TextView
+                android:id="@+id/stockTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stock: 0"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

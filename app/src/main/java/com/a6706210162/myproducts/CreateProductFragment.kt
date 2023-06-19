@@ -115,7 +115,7 @@ class CreateProductFragment : Fragment() {
         }
 
         progressBar.visibility = View.VISIBLE
-        AndroidNetworking.get("https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=android&site=stackoverflow")
+        AndroidNetworking.get("https://dummyjson.com/products")
             .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
@@ -123,13 +123,14 @@ class CreateProductFragment : Fragment() {
                     progressBar.visibility = View.GONE
                     try {
                         // Extract data by key
-                        val itemsArray = response.getJSONArray("items")
+                        val itemsArray = response.getJSONArray("products")
                         for (i in 0 until itemsArray.length()) {
                             val itemArray = itemsArray.getJSONObject(i)
-                            val id = itemArray.getInt("question_id")
+                            val id = itemArray.getInt("id")
                             val title = itemArray.getString("title")
-                            val link = itemArray.getString("link")
-                            productsOptions.add(Item(id, title, link))
+                            val price = itemArray.getString("price")
+                            val stock = itemArray.getString("stock")
+                            productsOptions.add(Item(id, title, price, stock))
                         }
                         Log.d(TAG, productsOptions.toString())
                         mAdapter!!.notifyDataSetChanged()
