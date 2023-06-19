@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 
 import android.os.Bundle
@@ -25,9 +25,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myproducts.R
-import com.example.myproducts.databinding.FragmentProductDetailBinding
-import com.example.myproducts.data.Product
+import com.a6706210162.myproducts.R
+import com.a6706210162.myproducts.databinding.FragmentProductDetailBinding
+import com.a6706210162.myproducts.data.Product
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProductDetailFragment : Fragment() {

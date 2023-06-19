@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -23,7 +23,6 @@ import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -44,9 +43,9 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.example.myproducts.data.Product
-import com.example.myproducts.data.Item
-import com.example.myproducts.databinding.FragmentAddProductBinding
+import com.a6706210162.myproducts.data.Product
+import com.a6706210162.myproducts.data.Item
+import com.a6706210162.myproducts.databinding.FragmentAddProductBinding
 import org.json.JSONException
 import org.json.JSONObject
 

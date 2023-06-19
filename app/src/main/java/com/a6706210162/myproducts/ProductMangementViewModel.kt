@@ -1,8 +1,8 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import androidx.lifecycle.*
-import com.example.myproducts.data.Product
-import com.example.myproducts.data.ProductDao
+import com.a6706210162.myproducts.data.Product
+import com.a6706210162.myproducts.data.ProductDao
 import kotlinx.coroutines.launch
 
 class ProductMangementViewModel(private val productDao: ProductDao): ViewModel() {

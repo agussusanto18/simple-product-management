@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.app.Application
-import com.example.myproducts.data.ProductRoomDatabase
+import com.a6706210162.myproducts.data.ProductRoomDatabase
 
 class ProductManagementApplication : Application(){
 

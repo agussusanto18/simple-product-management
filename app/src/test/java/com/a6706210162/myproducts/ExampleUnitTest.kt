@@ -1,4 +1,4 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import org.junit.Test
 

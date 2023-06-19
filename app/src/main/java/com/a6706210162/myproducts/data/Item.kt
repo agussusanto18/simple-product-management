@@ -1,4 +1,4 @@
-package com.example.myproducts.data
+package com.a6706210162.myproducts.data
 
 data class Item (
     val id: Int,

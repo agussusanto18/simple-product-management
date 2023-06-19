@@ -1,12 +1,12 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myproducts.databinding.ProductListItemBinding
-import com.example.myproducts.data.Product
+import com.a6706210162.myproducts.databinding.ProductListItemBinding
+import com.a6706210162.myproducts.data.Product
 
 class ProductListAdapter(private val listener: ItemClickListener) : ListAdapter<Product, ProductListAdapter.ItemViewHolder>(DiffCallBack) {
 

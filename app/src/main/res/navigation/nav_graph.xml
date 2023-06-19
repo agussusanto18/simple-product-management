@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/itemListFragment"
-        android:name="com.example.myproducts.ListProductFragment"
+        android:name="com.a6706210162.myproducts.ListProductFragment"
         android:label="@string/app_name"
         tools:layout="@layout/product_list_fragment">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
-        android:name="com.example.myproducts.ProductDetailFragment"
+        android:name="com.a6706210162.myproducts.ProductDetailFragment"
         android:label="@string/item_detail_fragment_title"
         tools:layout="@layout/fragment_product_detail">
         <argument
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/addItemFragment"
-        android:name="com.example.myproducts.CreateProductFragment"
+        android:name="com.a6706210162.myproducts.CreateProductFragment"
         android:label="{title}"
         tools:layout="@layout/fragment_add_product">
         <argument

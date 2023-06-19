@@ -1,4 +1,4 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myproducts.data.Item
+import com.a6706210162.myproducts.data.Item
 
 class ProductOptionAdapter(private val dataList: List<Item>, private val context: Context) : RecyclerView.Adapter<ProductOptionAdapter.ViewHolder>() {
 

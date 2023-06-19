@@ -1,4 +1,4 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import com.example.myproducts.R
+import com.a6706210162.myproducts.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 

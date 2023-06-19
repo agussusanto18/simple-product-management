@@ -1,4 +1,4 @@
-package com.example.myproducts
+package com.a6706210162.myproducts
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.myproducts.R
-import com.example.myproducts.databinding.ProductListFragmentBinding
+import com.a6706210162.myproducts.R
+import com.a6706210162.myproducts.databinding.ProductListFragmentBinding
 
 /**
  * Main fragment displaying details for all items in the database.
