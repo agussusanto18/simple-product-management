@@ -46,6 +46,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.a6706210162.myproducts.data.Product
 import com.a6706210162.myproducts.data.Item
 import com.a6706210162.myproducts.databinding.FragmentAddProductBinding
+import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -72,7 +73,9 @@ class CreateProductFragment : Fragment() {
     private var productsOptions: MutableList<Item> = ArrayList()
 
     lateinit var progressBar: ProgressBar
-
+    lateinit var itemNameInput: TextInputEditText
+    lateinit var itemPriceInput: TextInputEditText
+    lateinit var itemStockInput: TextInputEditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,8 +85,11 @@ class CreateProductFragment : Fragment() {
         _binding = FragmentAddProductBinding.inflate(inflater, container, false)
 
         recyclerView = binding.productsRecyclerView
+        itemNameInput = binding.itemName
+        itemPriceInput = binding.itemPrice
+        itemStockInput = binding.itemCount
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mAdapter = ProductOptionAdapter(productsOptions, requireContext())
+        mAdapter = ProductOptionAdapter(productsOptions, requireContext(), itemNameInput, itemPriceInput, itemStockInput)
         recyclerView.adapter = mAdapter
         progressBar = binding.progressBar
         fetchQuetionList()
@@ -130,7 +136,9 @@ class CreateProductFragment : Fragment() {
                             val title = itemArray.getString("title")
                             val price = itemArray.getString("price")
                             val stock = itemArray.getString("stock")
-                            productsOptions.add(Item(id, title, price, stock))
+                            val image = itemArray.getString("thumbnail")
+
+                            productsOptions.add(Item(id, title, price, stock, image))
                         }
                         Log.d(TAG, productsOptions.toString())
                         mAdapter!!.notifyDataSetChanged()

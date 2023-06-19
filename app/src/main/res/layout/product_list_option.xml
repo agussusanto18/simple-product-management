@@ -12,25 +12,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <TextView
-                android:id="@+id/titleTextView"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:text="-"/>
-            <TextView
-                android:id="@+id/priceTextView"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:text="-"/>
+                <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$0"/>
+                <TextView
+                    android:id="@+id/stockTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stock: 0"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnAddView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$0"/>
-            <TextView
-                android:id="@+id/stockTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stock: 0"/>
+                android:text="Add" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
